@@ -2,7 +2,7 @@
 
 namespace App\Models\Repositories\Customer\Query;
 
-use App\Models\Customer;
+use App\Models\Entities\Customer;
 use Illuminate\Support\Collection;
 
 interface ICustomerQueryRepository

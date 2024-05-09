@@ -218,4 +218,25 @@ enum CustomerPrefixPhoneNumberEnum: string
     case Yemen_South = "+967";
     case Zambia = "+260";
     case Zimbabwe = "+263";
+
+    public static function getEnumByName(string $name): self|null
+    {
+        foreach (self::cases() as $case) {
+            if ($case->value === $name) {
+                return $case;
+            }
+        }
+        return null;
+    }
+
+    public static function getEnumByValue(string $value): self|null
+    {
+        foreach (self::cases() as $case) {
+            if ($case->name === $value) {
+                return $case;
+            }
+        }
+        return null;
+    }
 }
+

@@ -17,7 +17,7 @@ class CustomerFactory extends Factory
     {
         return [
             'first_name' => fake()->name(),
-            'last_name' => fake()->name(),
+            'last_name' => fake()->lastName(),
             'date_of_birth' => fake()->date(),
             'prefix_phone_number' => fake()->randomElement(array_column(CustomerPrefixPhoneNumberEnum::cases(), 'value')),
             'phone_number' => fake()->numerify('##########'),

@@ -2,8 +2,8 @@
 
 namespace App\Models\Repositories\Customer\Query;
 
-use App\Models\Customer;
-use Database\Factories\CustomerFactory;
+use App\Models\Entities\Customer;
+use App\Models\Factories\CustomerFactory;
 use Eghamat24\DatabaseRepository\Models\Repositories\MySqlRepository;
 use Illuminate\Support\Collection;
 

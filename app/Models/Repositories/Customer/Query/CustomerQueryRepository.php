@@ -2,7 +2,7 @@
 
 namespace App\Models\Repositories\Customer\Query;
 
-use App\Models\Customer;
+use App\Models\Entities\Customer;
 use App\Models\Repositories\Customer\RedisCustomerRepository;
 use Illuminate\Support\Collection;
 

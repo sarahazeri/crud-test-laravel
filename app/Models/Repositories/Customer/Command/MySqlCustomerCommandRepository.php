@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Repositories\Customer\Query;
+namespace App\Models\Repositories\Customer\Command;
 
-use App\Models\Customer;
-use Database\Factories\CustomerFactory;
+use App\Models\Entities\Customer;
+use App\Models\Factories\CustomerFactory;
 use Eghamat24\DatabaseRepository\Models\Repositories\MySqlRepository;
 use Illuminate\Support\Collection;
 
@@ -17,6 +17,15 @@ class MySqlCustomerCommandRepository extends MySqlRepository implements ICustome
         $this->factory = new CustomerFactory();
 
         parent::__construct();
+    }
+
+    public function getOneById(int $id): null|Customer
+    {
+        $customer = $this->newQuery()
+            ->where('id', $id)
+            ->first();
+
+        return $customer ? $this->factory->makeEntityFromStdClass($customer) : null;
     }
 
     public function create(Customer $customer): Customer
@@ -59,4 +68,14 @@ class MySqlCustomerCommandRepository extends MySqlRepository implements ICustome
                 'updated_at' => $customer->getUpdatedAt(),
             ]);
     }
+
+    public function delete(Customer $customer): int
+    {
+        return $this->newQuery()
+            ->where($this->primaryKey, $customer->getPrimaryKey())
+            ->delete([
+                'id' => $customer->getId(),
+            ]);
+    }
+
 }
