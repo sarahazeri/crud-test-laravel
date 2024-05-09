@@ -67,6 +67,7 @@ class MySqlCustomerQueryRepository extends MySqlRepository implements ICustomerQ
     public function getAll(): Collection
     {
         $customer = $this->newQuery()
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return $this->factory->makeCollectionOfEntities($customer);
