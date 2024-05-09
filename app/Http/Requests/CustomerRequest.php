@@ -7,7 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Unique;
+use App\Http\Rules\PhoneNumberValidationRule;
+
 
 class CustomerRequest extends FormRequest
 {
@@ -44,7 +45,12 @@ class CustomerRequest extends FormRequest
             'email' => ['required', 'string', 'max:255',
                 Rule::unique('customers', 'email')->ignore($request->id),
             ],
-            'bank_account_number' => 'nullable|string'
+            'bank_account_number' => 'nullable|string',
+            'full_phone_number' => [
+                function ($attribute, $value, $fail) {
+                    $validator = new PhoneNumberValidationRule();
+                    $validator->validate($attribute, $value, $fail);
+                }],
         ];
     }
 }
