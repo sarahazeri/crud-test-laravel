@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-namespace Tests\Domain;
-
 use Tests\TestCase;
 use App\Models\Customer;
 
