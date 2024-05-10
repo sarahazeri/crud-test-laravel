@@ -23,7 +23,7 @@ Customer {
 - [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_separation) pattern ([Event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing)).
 - Clean git commits that shows your work progress.
 - Use PHP 8.2.x only
-- Swagger
+- Swagger ({{base_url}}/api/documentation)
 
 ### Validations (Must)
 
@@ -44,5 +44,6 @@ Customer {
 - Docker-compose project that loads database service automatically with `docker-compose up`
 
 ## Presentation (Nice To Have)
-- Web UI.
+
+- Web UI. ({{base_url}}/customers)
 
