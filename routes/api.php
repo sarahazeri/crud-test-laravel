@@ -23,3 +23,7 @@ Route::post('/customers', [ApiController::class, 'store']);
 Route::get('/customers/{id}', [ApiController::class, 'show']);
 Route::put('/customers/{id}', [ApiController::class, 'update']);
 Route::delete('/customers/{id}', [ApiController::class, 'destroy']);
+
+Route::get('/api/documentation', function () {
+    return view('swagger');
+});

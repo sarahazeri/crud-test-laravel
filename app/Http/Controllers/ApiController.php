@@ -10,10 +10,25 @@ use App\Models\Repositories\Customer\Query\CustomerQueryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
-
+/**
+ * @OA\Info(title="My First API", version="0.1")
+ * @OA\Tag(
+ *     name="Customers",
+ *     description="API Endpoints for Customers"
+ * )
+ */
 class ApiController extends Controller
 {
-
+    /**
+     * @OA\Get(
+     *     path="/api/customers",
+     *     tags={"Customers"},
+     *     summary="Get all customers",
+     *     description="Returns a list of all customers.",
+     *     @OA\Response(response="200", description="Successful operation"),
+     *     security={}
+     * )
+     */
     public function index(): JsonResponse
     {
         $customerQueryRepository = new CustomerQueryRepository();
@@ -21,6 +36,19 @@ class ApiController extends Controller
         return response()->json($customers, 200);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/customers",
+     *     tags={"Customers"},
+     *     summary="Create a new customer",
+     *     description="Creates a new customer.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *     ),
+     *     @OA\Response(response="201", description="Customer created successfully"),
+     *     @OA\Response(response="400", description="Bad request")
+     * )
+     */
     public function store(Request $request): JsonResponse
     {
         $customerCommandRepository = new CustomerCommandRepository();
@@ -47,6 +75,27 @@ class ApiController extends Controller
         return response()->json($customer, 200);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/customers/{id}",
+     *     tags={"Customers"},
+     *     summary="Update a customer",
+     *     description="Updates an existing customer by ID.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the customer",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *     ),
+     *     @OA\Response(response="200", description="Customer updated successfully"),
+     *     @OA\Response(response="400", description="Bad request"),
+     *     @OA\Response(response="404", description="Customer not found")
+     * )
+     */
     public function update(Request $request, $id)
     {
         $customerCommandRepository = new CustomerCommandRepository();
@@ -68,6 +117,23 @@ class ApiController extends Controller
 
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/api/customers/{id}",
+     *     tags={"Customers"},
+     *     summary="Delete a customer",
+     *     description="Deletes an existing customer by ID.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the customer",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(response="204", description="Customer deleted successfully"),
+     *     @OA\Response(response="404", description="Customer not found")
+     * )
+     */
     public function destroy($id)
     {
         $customerCommandRepository = new CustomerCommandRepository();

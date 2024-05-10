@@ -1,5 +1,47 @@
 <?php
-
+/**
+ * @OA\Schema(
+ *     title="Customer",
+ *     description="Customer model",
+ *     @OA\Property(
+ *         property="firstname",
+ *         type="string",
+ *         description="First name of the customer"
+ *     ),
+ *     @OA\Property(
+ *         property="lastname",
+ *         type="string",
+ *         description="Last name of the customer"
+ *     ),
+ *     @OA\Property(
+ *         property="dateOfBirth",
+ *         type="string",
+ *         format="date",
+ *         description="Date of birth of the customer (YYYY-MM-DD)"
+ *     ),
+ *     @OA\Property(
+ *         property="PrefixphoneNumber",
+ *         type="enum",
+ *         description="Prefix phone number of the customer"
+ *     ),
+ *     @OA\Property(
+ *         property="phoneNumber",
+ *         type="unsignedBigInt",
+ *         description="Phone number of the customer without prefix"
+ *     ),
+ *     @OA\Property(
+ *         property="email",
+ *         type="string",
+ *         format="email",
+ *         description="Email address of the customer"
+ *     ),
+ *     @OA\Property(
+ *         property="bankAccountNumber",
+ *         type="string",
+ *         description="Bank account number of the customer"
+ *     )
+ * )
+ */
 namespace App\Models\Entities;
 
 use App\Models\Enums\CustomerPrefixPhoneNumberEnum;
