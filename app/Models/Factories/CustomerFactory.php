@@ -43,18 +43,7 @@ class CustomerFactory implements IFactory
 
     public function makeEntityFromArray(array $entity): Entity
     {
-        $customer = new Customer();
-
-        $customer->setFirstName($entity['first_name']);
-        $customer->setLastName($entity['last_name']);
-        $customer->setDateOfBirth($entity['date_of_birth']);
-        $customer->setPrefixPhoneNumber(CustomerPrefixPhoneNumberEnum::getEnumByName($entity['prefix_phone_number']));
-        $customer->setPhoneNumber($entity['phone_number']);
-        $customer->setFullPhoneNumber($entity['prefix_phone_number'] . $entity['phone_number']);
-        $customer->setEmail($entity['email']);
-        $customer->setBankAccountNumber($entity['bank_account_number']);
-
-        return $customer;
+        return $this->changeEntityFromArray(new Customer(), $entity);
     }
 
     public function changeEntityFromArray(Customer $customer, array $entity): Entity
@@ -70,4 +59,5 @@ class CustomerFactory implements IFactory
 
         return $customer;
     }
+
 }

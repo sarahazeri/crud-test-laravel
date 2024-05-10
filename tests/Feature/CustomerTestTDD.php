@@ -1,5 +1,6 @@
 <?php
 
+namespace Tests\Feature;
 
 use App\Models\Enums\CustomerPrefixPhoneNumberEnum;
 use Tests\TestCase;
